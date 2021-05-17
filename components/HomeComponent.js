@@ -12,21 +12,19 @@ function RenderCard({item, isLoading, errMess}) {
         return <h4>{errMess}</h4>;
     }
     return (
-        <div className="col-md-5 m-1">
-            <FadeTransform
-                in
-                transformProps={{
-                    exitTransform: 'scale(0.5) translateY(-50%)'
-                }}>
-                <Card>
-                    <CardImg top src={baseUrl + campsite.image} alt={campsite.name} />
-                    <CardBody>
-                        <CardText>{campsite.description}</CardText>
-                    </CardBody>
-                </Card>
-            </FadeTransform>
-        </div>
-
+        <FadeTransform
+            in
+            transformProps={{
+                exitTransform: 'scale(0.5) translateY(50%)'
+            }}>
+            <Card>
+                <CardImg src={baseUrl + item.image} alt={item.name} />
+                <CardBody>
+                    <CardTitle>{item.name}</CardTitle>
+                    <CardText>{item.description}</CardText>
+                </CardBody>
+            </Card>
+        </FadeTransform>
     );
 }
 
@@ -39,19 +37,25 @@ function Home(props) {
                         item={props.campsite}
                         isLoading={props.campsitesLoading}
                         errMess={props.campsitesErrMess}
-                    />                </div>
+                    />
+                </div>
                 <div className="col-md m-1">
                     <RenderCard
                         item={props.promotion}
                         isLoading={props.promotionLoading}
                         errMess={props.promotionErrMess}
-                    />                </div>
+                    />
+                </div>
                 <div className="col-md m-1">
-                    <RenderCard item={props.partner} />
+                    <RenderCard 
+                        item={props.partner}
+                        isLoading={props.partnerLoading}
+                        errMess={props.partnerErrMess}
+                    />
                 </div>
             </div>
         </div>
     );
 }
 
-export default Home;  
+export default Home;

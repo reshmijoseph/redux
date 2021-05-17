@@ -1,5 +1,7 @@
-import React, { Component }  from 'react';
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label } from 'reactstrap';
+import React, { Component } from 'react';
+import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron,
+    Button, Modal, ModalHeader, ModalBody,
+    Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
@@ -8,30 +10,33 @@ class Header extends Component {
         super(props);
 
         this.state = {
-          isNavOpen: false,
-          isModalOpen: false
+            isNavOpen: false,
+            isModalOpen: false
         };
+
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
-
     }
+
     toggleNav() {
         this.setState({
             isNavOpen: !this.state.isNavOpen
         });
     }
+
     toggleModal() {
         this.setState({
             isModalOpen: !this.state.isModalOpen
         });
     }
+
     handleLogin(event) {
         alert(`Username: ${this.username.value} Password: ${this.password.value} Remember: ${this.remember.checked}`);
         this.toggleModal();
         event.preventDefault();
     }
-    
+
     render() {
         return (
             <React.Fragment>
@@ -81,6 +86,7 @@ class Header extends Component {
                         </Collapse>
                     </div>
                 </Navbar>
+
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <ModalBody>
@@ -106,6 +112,7 @@ class Header extends Component {
                         </Form>
                     </ModalBody>
                 </Modal>
+
             </React.Fragment>
         );
     }
